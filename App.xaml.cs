@@ -1,11 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
+using WpfNavigationDemo.Clients;
 using WpfNavigationDemo.Core;
 using WpfNavigationDemo.MVVM.ViewModel;
 using WpfNavigationDemo.Services;
@@ -32,6 +28,8 @@ namespace WpfNavigationDemo
             services.AddSingleton<HomeViewModel>();
             services.AddSingleton<SettingsViewModel>();
             services.AddSingleton<INavigationService, NavigationService>();
+            services.AddSingleton<IEmailClient, Smtp2GoClient>();
+            services.AddSingleton<ISecrets, Secrets>();
 
             services.AddSingleton<Func<Type, ViewModel>>(serviceProvider => viewModelType => (ViewModel)serviceProvider.GetRequiredService(viewModelType));
 

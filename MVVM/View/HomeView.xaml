@@ -22,8 +22,8 @@
             <Label Content="To:"
                 />
 
-            <TextBox x:Name="EmailAddress"
-                     DataContext="{Binding EmailAddress}"
+            <TextBox x:Name="EmailAddressField"
+                     Text="{Binding EmailAddress}"
                      Width="200"
                      HorizontalAlignment="Left"
                      Margin="0 5"
@@ -32,8 +32,8 @@
             <Label Content="Subject:"
                 />
 
-            <TextBox x:Name="Subject"
-                     DataContext="{Binding Subject}"
+            <TextBox x:Name="SubjectField"
+                     Text="{Binding Subject}"
                      Width="200"
                      HorizontalAlignment="Left"
                      Margin="0 5"
@@ -42,8 +42,8 @@
             <Label Content="Body:"
                 />
 
-            <TextBox x:Name="EmailBody"
-                     DataContext="{Binding EmailBody}"
+            <TextBox x:Name="EmailBodyField"
+                     Text="{Binding EmailBody}"
                      Height="150"
                      Width="400"
                      HorizontalAlignment="Left"
