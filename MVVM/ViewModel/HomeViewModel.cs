@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
 using WpfNavigationDemo.Core;
 using WpfNavigationDemo.Services;
 
@@ -11,9 +6,13 @@ namespace WpfNavigationDemo.MVVM.ViewModel
 {
     public class HomeViewModel : Core.ViewModel
     {
+        public string EmailAddress { get; set; }
+        public string Subject { get; set; }
+        public string EmailBody { get; set; }
+
         private INavigationService _navigation;
 
-        public RelayCommand NavigateToSettingsCommand { get; set; }
+        public RelayCommand SendEmailCommand { get; set; }
 
         public INavigationService Navigation 
         { 
@@ -29,7 +28,12 @@ namespace WpfNavigationDemo.MVVM.ViewModel
         {
             Navigation = navigation;
 
-            NavigateToSettingsCommand = new RelayCommand(o => { Navigation.NavigateTo<SettingsViewModel>(); }, o => { return true; });
+            SendEmailCommand = new RelayCommand(SendEmail, o => { return true; });
+        }
+
+        private void SendEmail(object obj)
+        {
+            throw new NotImplementedException();
         }
     }
 }

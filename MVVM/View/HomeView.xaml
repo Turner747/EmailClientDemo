@@ -5,20 +5,58 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfNavigationDemo.MVVM.View"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300"
-             Background="#252525">
+             d:DesignHeight="450" d:DesignWidth="700"
+             Background="White">
     <Grid>
-        <StackPanel VerticalAlignment="Center"
-                    HorizontalAlignment="Center">
-            <TextBlock Text="Home"
-                       Foreground="White"
+        <StackPanel VerticalAlignment="Top"
+                    HorizontalAlignment="Left"
+                    Margin="10"
+                    Width="600">
+            
+            <TextBlock Text="Send Email"
+                       Foreground="Black"
                        FontSize="25"
+                       Margin="0 5"
             />
 
-            <Button Content="Settings"
-                    Margin="5"
+            <Label Content="To:"
+                />
+
+            <TextBox x:Name="EmailAddress"
+                     DataContext="{Binding EmailAddress}"
+                     Width="200"
+                     HorizontalAlignment="Left"
+                     Margin="0 5"
+                />
+
+            <Label Content="Subject:"
+                />
+
+            <TextBox x:Name="Subject"
+                     DataContext="{Binding Subject}"
+                     Width="200"
+                     HorizontalAlignment="Left"
+                     Margin="0 5"
+                />
+
+            <Label Content="Body:"
+                />
+
+            <TextBox x:Name="EmailBody"
+                     DataContext="{Binding EmailBody}"
+                     Height="100"
+                     Width="500"
+                     HorizontalAlignment="Left"
+                     Margin="0 5"
+                     AcceptsReturn="True"
+                />
+
+            <Button Content="Send"
                     Height="25"
-                    Command="{Binding NavigateToSettingsCommand}"
+                    Width="75"
+                    HorizontalAlignment="Left"
+                    Margin="0 5"
+                    Command="{Binding SendEmailCommand}"
                 />
         </StackPanel>
     </Grid>
