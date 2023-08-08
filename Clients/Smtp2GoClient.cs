@@ -1,9 +1,6 @@
 ﻿using Newtonsoft.Json;
 using RestSharp;
-using RestSharp.Serializers.Json;
-using System.Text.Json;
 using System.Threading.Tasks;
-using System.Windows.Documents;
 using WpfNavigationDemo.MVVM.Model;
 using WpfNavigationDemo.Services;
 

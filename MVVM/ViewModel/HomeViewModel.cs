@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Windows;
 using System.Windows.Media;
 using WpfNavigationDemo.Clients;
 using WpfNavigationDemo.Core;
