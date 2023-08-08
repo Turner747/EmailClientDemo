@@ -44,8 +44,8 @@
 
             <TextBox x:Name="EmailBody"
                      DataContext="{Binding EmailBody}"
-                     Height="100"
-                     Width="500"
+                     Height="150"
+                     Width="400"
                      HorizontalAlignment="Left"
                      Margin="0 5"
                      AcceptsReturn="True"

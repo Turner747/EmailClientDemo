@@ -5,12 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfNavigationDemo"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="600"
+        Background="WhiteSmoke">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100">
             </ColumnDefinition>
-            <ColumnDefinition Width="700">
+            <ColumnDefinition Width="500">
             </ColumnDefinition>
         </Grid.ColumnDefinitions>
 
