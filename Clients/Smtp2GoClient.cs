@@ -50,7 +50,10 @@ namespace WpfNavigationDemo.Clients
 
             var response =  await _client.PostAsync(request);
 
-            return JsonConvert.DeserializeObject<Response<ErrorData>>(response.Content);
+            return JsonConvert.DeserializeObject<Response<ErrorData>>(response.Content, new JsonSerializerSettings
+            {
+                NullValueHandling = NullValueHandling.Ignore
+            });
         }
 
         public async Task<Response<EmailResult>> SendEmail(Email email)

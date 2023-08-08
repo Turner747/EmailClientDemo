@@ -8,5 +8,6 @@ namespace WpfNavigationDemo.MVVM.Model
     {
         public string? ApiKey { get; set; }
         public string? EmailAddress { get; set; }
+        public string? Message { get; set; }
     }
 }

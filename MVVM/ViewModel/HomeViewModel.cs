@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Media;
 using WpfNavigationDemo.Clients;
 using WpfNavigationDemo.Core;
@@ -73,7 +74,7 @@ namespace WpfNavigationDemo.MVVM.ViewModel
             }
             else
             {
-                OutputMessage = $"Email failed. Error: {response?.Data?.Error}";
+                OutputMessage = $"Email failed. Error: {response?.Data?.Failures.First()}";
                 OutputColour = Brushes.Red;
             }
         }
