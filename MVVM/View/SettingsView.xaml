@@ -8,34 +8,45 @@
              d:DesignHeight="450" d:DesignWidth="700"
              Background="White">
     <Grid>
-        <StackPanel VerticalAlignment="Top"
-                    HorizontalAlignment="Left"
-                    Margin="10"
-                    Width="600">
+        <StackPanel>
+            <StackPanel VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Margin="10"
+                        Width="600">
             
-            <TextBlock Text="Settings"
-                       Foreground="Black"
-                       FontSize="25"
-                       Margin="0 5"
-            />
-
-            <Label Content="Sender:"
+                <TextBlock Text="Settings"
+                           Foreground="Black"
+                           FontSize="25"
+                           Margin="0 5"
                 />
 
-            <TextBox x:Name="EmailAddressField"
-                     Text="{Binding EmailAddress}"
-                     Width="200"
-                     HorizontalAlignment="Left"
-                     Margin="0 5"
-                />
+                <Label Content="Sender:"
+                    />
 
-            <Button Content="Save"
+                <TextBox x:Name="EmailAddressField"
+                         Text="{Binding EmailAddress}"
+                         Width="200"
+                         HorizontalAlignment="Left"
+                         Margin="0 5"
+                    />
+
+            
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal"
+                        Margin="10 255"
+                        VerticalAlignment="Center">
+                <Button Content="Save"
                     Height="25"
                     Width="75"
                     HorizontalAlignment="Left"
-                    Margin="0 260 0 0"
+                    Margin="0"
                     Command="{Binding SaveSettingsCommand}"
                 />
+                <Label Content="{Binding OutputMessage}"
+                       Margin="10 0"
+                       Foreground="{Binding OutputColour}"/>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </UserControl>

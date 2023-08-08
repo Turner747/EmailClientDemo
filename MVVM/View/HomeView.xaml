@@ -8,56 +8,69 @@
              d:DesignHeight="450" d:DesignWidth="700"
              Background="White">
     <Grid>
-        <StackPanel VerticalAlignment="Top"
-                    HorizontalAlignment="Left"
-                    Margin="10"
-                    Width="600">
+        <StackPanel>
+            <StackPanel VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Margin="10"
+                        Width="600">
             
-            <TextBlock Text="Send Email"
-                       Foreground="Black"
-                       FontSize="25"
-                       Margin="0 5"
-            />
-
-            <Label Content="To:"
+                <TextBlock Text="Send Email"
+                           Foreground="Black"
+                           FontSize="25"
+                           Margin="0 5"
                 />
 
-            <TextBox x:Name="EmailAddressField"
-                     Text="{Binding EmailAddress}"
-                     Width="200"
-                     HorizontalAlignment="Left"
-                     Margin="0 5"
-                />
+                <Label Content="To:"
+                    />
 
-            <Label Content="Subject:"
-                />
+                <TextBox x:Name="EmailAddressField"
+                         Text="{Binding EmailAddress}"
+                         Width="200"
+                         HorizontalAlignment="Left"
+                         Margin="0 5"
+                    />
 
-            <TextBox x:Name="SubjectField"
-                     Text="{Binding Subject}"
-                     Width="200"
-                     HorizontalAlignment="Left"
-                     Margin="0 5"
-                />
+                <Label Content="Subject:"
+                    />
 
-            <Label Content="Body:"
-                />
+                <TextBox x:Name="SubjectField"
+                         Text="{Binding Subject}"
+                         Width="200"
+                         HorizontalAlignment="Left"
+                         Margin="0 5"
+                    />
 
-            <TextBox x:Name="EmailBodyField"
-                     Text="{Binding EmailBody}"
-                     Height="150"
-                     Width="400"
-                     HorizontalAlignment="Left"
-                     Margin="0 5"
-                     AcceptsReturn="True"
-                />
+                <Label Content="Body:"
+                    />
 
-            <Button Content="Send"
-                    Height="25"
-                    Width="75"
-                    HorizontalAlignment="Left"
-                    Margin="0 5"
-                    Command="{Binding SendEmailCommand}"
-                />
+                <TextBox x:Name="EmailBodyField"
+                         Text="{Binding EmailBody}"
+                         Height="150"
+                         Width="400"
+                         HorizontalAlignment="Left"
+                         Margin="0 5"
+                         AcceptsReturn="True"
+                    />
+
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal"
+                        Margin="10"
+                        VerticalAlignment="Center">
+            
+                <Button Content="Send"
+                        Height="25"
+                        Width="75"
+                        HorizontalAlignment="Left"
+                        Margin="0"
+                        Command="{Binding SendEmailCommand}"
+                    />
+            
+                <Label Content="{Binding OutputMessage}"
+                       Margin="10 0"
+                       Foreground="{Binding OutputColour}"/>
+            
+            </StackPanel>
         </StackPanel>
     </Grid>
 </UserControl>

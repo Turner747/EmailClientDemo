@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media;
 using WpfNavigationDemo.Clients;
 using WpfNavigationDemo.Core;
 using WpfNavigationDemo.Services;
@@ -13,6 +14,27 @@ namespace WpfNavigationDemo.MVVM.ViewModel
     public class SettingsViewModel : Core.ViewModel
     {
         public string? EmailAddress { get; set; }
+        public string? OutputMessage 
+        {
+            get => outputMessage;
+            set
+            {
+                outputMessage = value;
+                OnPropertyChanged();
+            }
+        }
+        private string outputMessage;
+
+        public Brush OutputColour
+        {
+            get => outputColour;
+            set
+            {
+                outputColour = value;
+                OnPropertyChanged();
+            }
+        }
+        private Brush outputColour;
 
         private INavigationService _navigation;
         private readonly IEmailClient _emailClient;
@@ -54,7 +76,8 @@ namespace WpfNavigationDemo.MVVM.ViewModel
             if (senderExists)
             {
                 _emailClient.SenderEmail = EmailAddress;
-                MessageBox.Show($"Email saved as sender.");
+                OutputMessage = $"Email saved as sender.";
+                OutputColour = Brushes.Green;
                 return;
             }
             
@@ -63,11 +86,13 @@ namespace WpfNavigationDemo.MVVM.ViewModel
             if (response?.Data == null)
             {
                 _emailClient.SenderEmail = EmailAddress;
-                MessageBox.Show($"Email added successfully. ID: {response?.RequestId}");
+                OutputMessage = $"Email added successfully. ID: {response?.RequestId}";
+                OutputColour = Brushes.Green;
             }
             else
             {
-                MessageBox.Show($"Email failed to add. Error: {response?.Data?.Error}");
+                OutputMessage = $"Email failed to add. Error: {response?.Data?.Error}";
+                OutputColour = Brushes.Red;
             }
         }
     }

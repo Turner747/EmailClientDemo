@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Media;
 using WpfNavigationDemo.Clients;
 using WpfNavigationDemo.Core;
 using WpfNavigationDemo.MVVM.Model;
@@ -12,6 +13,27 @@ namespace WpfNavigationDemo.MVVM.ViewModel
         public string? EmailAddress { get; set; }
         public string? Subject { get; set; }
         public string? EmailBody { get; set; }
+        public string? OutputMessage
+        {
+            get => outputMessage;
+            set
+            {
+                outputMessage = value;
+                OnPropertyChanged();
+            }
+        }
+        private string outputMessage;
+
+        public Brush OutputColour
+        {
+            get => outputColour;
+            set
+            {
+                outputColour = value;
+                OnPropertyChanged();
+            }
+        }
+        private Brush outputColour;
 
         private INavigationService _navigation;
         private IEmailClient _emailClient;
@@ -47,11 +69,13 @@ namespace WpfNavigationDemo.MVVM.ViewModel
 
             if (response?.Data?.Succeeded == 1)
             {
-                MessageBox.Show($"Email sent successfully. ID: {response?.Data?.EmailId}");
+                OutputMessage = $"Email sent successfully. ID: {response?.Data?.EmailId}";
+                OutputColour = Brushes.Green;
             }
             else
             {
-                MessageBox.Show($"Email failed. Error: {response?.Data?.Error}");
+                OutputMessage = $"Email failed. Error: {response?.Data?.Error}";
+                OutputColour = Brushes.Red;
             }
         }
     }
