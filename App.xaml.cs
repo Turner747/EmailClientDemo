@@ -29,7 +29,7 @@ namespace WpfNavigationDemo
             services.AddSingleton<SettingsViewModel>();
             services.AddSingleton<INavigationService, NavigationService>();
             services.AddSingleton<IEmailClient, Smtp2GoClient>();
-            services.AddSingleton<ISecrets, Secrets>();
+            services.AddSingleton<Secrets>();
 
             services.AddSingleton<Func<Type, ViewModel>>(serviceProvider => viewModelType => (ViewModel)serviceProvider.GetRequiredService(viewModelType));
 

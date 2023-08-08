@@ -40,19 +40,18 @@ namespace WpfNavigationDemo.MVVM.ViewModel
         {
             var email = new Email();
             email.To = new List<string>() { EmailAddress };
-            email.Sender = "joshua.turner2021@gmail.com";
             email.Subject = Subject;
             email.TextBody = EmailBody;
 
-            var success = await _emailClient.SendEmail(email);
+            var response = await _emailClient.SendEmail(email);
 
-            if (success)
+            if (response?.Data?.Succeeded == 1)
             {
-                MessageBox.Show($"Email sent successfully.");
+                MessageBox.Show($"Email sent successfully. ID: {response?.Data?.EmailId}");
             }
             else
             {
-                MessageBox.Show($"Email failed.");
+                MessageBox.Show($"Email failed. Error: {response?.Data?.Error}");
             }
         }
     }

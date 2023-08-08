@@ -1,19 +1,16 @@
 ﻿using Newtonsoft.Json.Serialization;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace WpfNavigationDemo.MVVM.Model
 {
     [JsonObject(NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
-    public class ResponseData
+    public class ErrorData
     {
-        // properties for success
-        public int Succeeded { get; set; }
-        public int failed { get; set; }
-        public List<string>? Failures { get; set; }
-        public string? EmailId { get; set; }
-
-        // properties for failure
         public string? Error { get; set; }
         public string? ErrorCode { get; set; }
     }

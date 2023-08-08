@@ -4,9 +4,9 @@ using Newtonsoft.Json;
 namespace WpfNavigationDemo.MVVM.Model
 {
     [JsonObject(NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
-    public class Response<T>
+    public class NewSender
     {
-        public T? Data { get; set; }
-        public string? RequestId { get; set; }
+        public string? ApiKey { get; set; }
+        public string? EmailAddress { get; set; }
     }
 }

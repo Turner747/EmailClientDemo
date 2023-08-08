@@ -3,12 +3,7 @@ using System.IO;
 
 namespace WpfNavigationDemo.Services
 {
-    public interface ISecrets
-    {
-        string ApiKey { get; set; }
-    }
-
-    public class Secrets : ISecrets
+    public class Secrets
     {
         public string ApiKey { get; set; }
 
