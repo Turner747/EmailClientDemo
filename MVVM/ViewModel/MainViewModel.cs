@@ -25,6 +25,8 @@ namespace WpfNavigationDemo.MVVM.ViewModel
             Navigation = navService;
             NavigateToHomeCommand = new RelayCommand(o => { Navigation.NavigateTo<HomeViewModel>(); }, o => { return true; });
             NavigateToSettingsCommand = new RelayCommand(o => { Navigation.NavigateTo<SettingsViewModel>(); }, o => { return true; });
+
+            Navigation.NavigateTo<HomeViewModel>();
         }
     }
 }
