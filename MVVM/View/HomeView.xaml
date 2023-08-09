@@ -8,12 +8,16 @@
              d:DesignHeight="450" d:DesignWidth="700"
              Background="White">
     <Grid>
-        <StackPanel>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="350"></RowDefinition>
+            <RowDefinition ></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
             <StackPanel VerticalAlignment="Top"
                         HorizontalAlignment="Left"
                         Margin="10"
                         Width="600">
-            
+
                 <TextBlock Text="Send Email"
                            Foreground="Black"
                            FontSize="25"
@@ -53,24 +57,25 @@
                     />
 
             </StackPanel>
-
-            <StackPanel Orientation="Horizontal"
-                        Margin="10"
-                        VerticalAlignment="Center">
+        </StackPanel>
+        
+        <StackPanel Grid.Row="1"
+                    Orientation="Horizontal"
+                    Margin="10"
+                    VerticalAlignment="Center">
             
-                <Button Content="Send"
-                        Height="25"
-                        Width="75"
-                        HorizontalAlignment="Left"
-                        Margin="0"
-                        Command="{Binding SendEmailCommand}"
-                    />
+            <Button Content="Send"
+                    Height="25"
+                    Width="75"
+                    HorizontalAlignment="Left"
+                    Margin="0"
+                    Command="{Binding SendEmailCommand}"
+                />
             
-                <Label Content="{Binding OutputMessage}"
-                       Margin="10 0"
-                       Foreground="{Binding OutputColour}"/>
+            <Label Content="{Binding OutputMessage}"
+                    Margin="10 0"
+                    Foreground="{Binding OutputColour}"/>
             
-            </StackPanel>
         </StackPanel>
     </Grid>
 </UserControl>

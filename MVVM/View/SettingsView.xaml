@@ -8,12 +8,16 @@
              d:DesignHeight="450" d:DesignWidth="700"
              Background="White">
     <Grid>
-        <StackPanel>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="350"></RowDefinition>
+            <RowDefinition ></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
             <StackPanel VerticalAlignment="Top"
                         HorizontalAlignment="Left"
                         Margin="10"
                         Width="600">
-            
+
                 <TextBlock Text="Settings"
                            Foreground="Black"
                            FontSize="25"
@@ -30,12 +34,35 @@
                          Margin="0 5"
                     />
 
-            
+                <Expander Header="Advanced"
+                          HorizontalAlignment="Left">
+                    <Grid Background="#FFE5E5E5">
+                        <StackPanel Width="400" 
+                                    Margin="5">
+                            <Label Content="API Key:"/>
+
+                            <TextBox x:Name="ApiKeyField"
+                                    Text="{Binding ApiKey}"
+                                    Width="200"
+                                    HorizontalAlignment="Left"
+                                    Margin="0 5"
+                            />
+                        </StackPanel>
+                    </Grid>
+                </Expander>
+
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal"
-                        Margin="10 255"
-                        VerticalAlignment="Center">
+
+
+            
+
+        </StackPanel>
+        
+        <StackPanel Orientation="Horizontal"
+                        Margin="10"
+                        VerticalAlignment="Center"
+                        Grid.Row="1">
                 <Button Content="Save"
                     Height="25"
                     Width="75"
@@ -47,6 +74,5 @@
                        Margin="10 0"
                        Foreground="{Binding OutputColour}"/>
             </StackPanel>
-        </StackPanel>
     </Grid>
 </UserControl>
