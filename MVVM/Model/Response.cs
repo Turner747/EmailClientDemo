@@ -8,5 +8,7 @@ namespace WpfNavigationDemo.MVVM.Model
     {
         public T? Data { get; set; }
         public string? RequestId { get; set; }
+        [JsonIgnore]
+        public string? ErrorMessage { get; set; }
     }
 }

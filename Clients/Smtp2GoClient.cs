@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using RestSharp;
+using System;
 using System.Threading.Tasks;
 using System.Windows.Controls.Ribbon;
 using WpfNavigationDemo.MVVM.Model;
@@ -22,7 +23,6 @@ namespace WpfNavigationDemo.Clients
         public string SenderEmail { get; set; }
         public string ApiKey { get; set; }
         
-        private readonly string _apiKey;
         private readonly RestClient _client;
 
         public Smtp2GoClient(Secrets secrets)
@@ -38,7 +38,7 @@ namespace WpfNavigationDemo.Clients
         {
             var sender = new NewSender
             {
-                ApiKey = _apiKey,
+                ApiKey = ApiKey,
                 EmailAddress = email
             };
 
@@ -51,7 +51,18 @@ namespace WpfNavigationDemo.Clients
 
             request.AddJsonBody(json);
 
-            var response =  await _client.PostAsync(request);
+            RestResponse response = null;
+            try
+            {
+                response = await _client.PostAsync(request);
+            }
+            catch (Exception ex)
+            {
+                return new Response<ErrorData>
+                {
+                    ErrorMessage = ex.Message
+                };
+            }
 
             return JsonConvert.DeserializeObject<Response<ErrorData>>(response.Content, new JsonSerializerSettings
             {
@@ -61,7 +72,7 @@ namespace WpfNavigationDemo.Clients
 
         public async Task<Response<EmailResult>> SendEmail(Email email)
         {
-            email.ApiKey = _apiKey;
+            email.ApiKey = ApiKey;
             email.Sender = SenderEmail;
             email.Version = 1;
 
@@ -74,7 +85,18 @@ namespace WpfNavigationDemo.Clients
 
             request.AddJsonBody(json);
 
-            var response = await _client.PostAsync(request);
+            RestResponse response = null;
+            try
+            {
+                response = await _client.PostAsync(request);
+            }
+            catch (Exception ex)
+            {
+                return new Response<EmailResult>
+                {
+                    ErrorMessage = ex.Message
+                };
+            }
 
             return JsonConvert.DeserializeObject<Response<EmailResult>>(response.Content);
         }
@@ -83,7 +105,7 @@ namespace WpfNavigationDemo.Clients
         {
             var basic = new BasicRequest
             {
-                ApiKey = _apiKey
+                ApiKey = ApiKey
             };
             
             var request = new RestRequest(@"single_sender_emails/view");
@@ -95,7 +117,18 @@ namespace WpfNavigationDemo.Clients
 
             request.AddJsonBody(json);
 
-            var response = await _client.PostAsync(request);
+            RestResponse response = null;
+            try
+            {
+                response = await _client.PostAsync(request);
+            }
+            catch (Exception ex)
+            {
+                return new Response<SendersList>
+                {
+                    ErrorMessage = ex.Message
+                };
+            }
 
             return JsonConvert.DeserializeObject<Response<SendersList>>(response.Content);
         }

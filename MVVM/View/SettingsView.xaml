@@ -29,7 +29,7 @@
 
                 <TextBox x:Name="EmailAddressField"
                          Text="{Binding EmailAddress}"
-                         Width="200"
+                         Width="260"
                          HorizontalAlignment="Left"
                          Margin="0 5"
                     />
@@ -44,7 +44,7 @@
 
                             <TextBox x:Name="ApiKeyField"
                                     Text="{Binding ApiKey}"
-                                    Width="200"
+                                    Width="250"
                                     HorizontalAlignment="Left"
                                     Margin="0 5"
                             />
