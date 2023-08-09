@@ -23,7 +23,7 @@ jobs:
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v2
         with:
-          dotnet-version: 7.0 # Adjust to your preferred .NET Core version
+          dotnet-version: 7.0.x # Adjust to your preferred .NET Core version
 
       - name: Build application
         run: dotnet build --configuration ${{ matrix.configuration }} ${{ env.Solution_Name }}
