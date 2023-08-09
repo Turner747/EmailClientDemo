@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using RestSharp;
 using System.Threading.Tasks;
+using System.Windows.Controls.Ribbon;
 using WpfNavigationDemo.MVVM.Model;
 using WpfNavigationDemo.Services;
 
@@ -9,6 +10,7 @@ namespace WpfNavigationDemo.Clients
     public interface IEmailClient
     {
         string SenderEmail { get; set; }
+        string ApiKey { get; set; }
 
         Task<Response<EmailResult>> SendEmail(Email email);
         Task<Response<ErrorData>> AddSenderEmail(string email);
@@ -18,13 +20,14 @@ namespace WpfNavigationDemo.Clients
     public class Smtp2GoClient : IEmailClient
     {
         public string SenderEmail { get; set; }
+        public string ApiKey { get; set; }
         
         private readonly string _apiKey;
         private readonly RestClient _client;
 
         public Smtp2GoClient(Secrets secrets)
         {
-            _apiKey = secrets.ApiKey;
+            ApiKey = secrets.ApiKey;
 
             var options = new RestClientOptions(@"https://api.smtp2go.com/v3/");
 

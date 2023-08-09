@@ -7,7 +7,17 @@ namespace WpfNavigationDemo.MVVM.ViewModel
 {
     public class SettingsViewModel : Core.ViewModel
     {
-        public string? EmailAddress { get; set; }
+        public string? ApiKey { get; set; }
+        public string? EmailAddress 
+        { 
+            get => _emailAddress;
+            set
+            {
+                _emailAddress = value;
+                OnPropertyChanged();
+            }
+        }
+
         public string? OutputMessage 
         {
             get => outputMessage;
@@ -31,6 +41,7 @@ namespace WpfNavigationDemo.MVVM.ViewModel
         private Brush outputColour;
 
         private INavigationService _navigation;
+        private string? _emailAddress;
         private readonly IEmailClient _emailClient;
 
         public RelayCommand SaveSettingsCommand { get; set; }
@@ -50,11 +61,27 @@ namespace WpfNavigationDemo.MVVM.ViewModel
             Navigation = navigation;
             _emailClient = email;
 
-            SaveSettingsCommand = new RelayCommand(SaveSetting, o => { return true; });
+            SaveSettingsCommand = new RelayCommand(SaveSettings, CanSaveSettings);
         }
 
-        private async void SaveSetting(object obj)
+        private bool CanSaveSettings(object obj)
         {
+            return true;
+        }
+
+        private async void SaveSettings(object obj)
+        {
+            if (EmailAddress == null || EmailAddress.Equals(""))
+            {
+                // todo: add regex validation
+                OutputMessage = $"Please enter an email address";
+                OutputColour = Brushes.Red;
+                return;
+            }
+
+            if (ApiKey != null && !ApiKey.Equals(""))
+                _emailClient.ApiKey = ApiKey;
+
             var senderList = await _emailClient.GetSenderEmails();
 
             bool senderExists = false;
