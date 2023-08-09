@@ -35,7 +35,8 @@
                     />
 
                 <Expander Header="Advanced"
-                          HorizontalAlignment="Left">
+                          HorizontalAlignment="Left"
+                          Margin="0 10">
                     <Grid Background="#FFE5E5E5">
                         <StackPanel Width="400" 
                                     Margin="5">

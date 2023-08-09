@@ -74,8 +74,7 @@ namespace WpfNavigationDemo.MVVM.ViewModel
             if (EmailAddress == null || EmailAddress.Equals(""))
             {
                 // todo: add regex validation
-                OutputMessage = $"Please enter an email address";
-                OutputColour = Brushes.Red;
+                displayOutputMessage($"Please enter an email address", Brushes.Red);
                 return;
             }
 
@@ -97,8 +96,7 @@ namespace WpfNavigationDemo.MVVM.ViewModel
             if (senderExists)
             {
                 _emailClient.SenderEmail = EmailAddress;
-                OutputMessage = $"Email saved as sender.";
-                OutputColour = Brushes.Green;
+                displayOutputMessage($"Email saved as sender.", Brushes.Green);
                 return;
             }
             
@@ -107,14 +105,18 @@ namespace WpfNavigationDemo.MVVM.ViewModel
             if (response?.Data == null)
             {
                 _emailClient.SenderEmail = EmailAddress;
-                OutputMessage = $"Email added successfully. ID: {response?.RequestId}";
-                OutputColour = Brushes.Green;
+                displayOutputMessage($"Email added successfully. ID: {response?.RequestId}", Brushes.Green);
             }
             else
             {
-                OutputMessage = $"Email failed to add. Error: {response?.Data?.Error}";
-                OutputColour = Brushes.Red;
+                displayOutputMessage($"Email failed to add. Error: {response?.Data?.Error}", Brushes.Red);
             }
+        }
+
+        private void displayOutputMessage(string message, Brush colour)
+        {
+            OutputMessage = message;
+            OutputColour = colour;
         }
     }
 }

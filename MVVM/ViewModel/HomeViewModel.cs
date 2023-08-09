@@ -75,14 +75,18 @@ namespace WpfNavigationDemo.MVVM.ViewModel
 
             if (response?.Data?.Succeeded == 1)
             {
-                OutputMessage = $"Email sent successfully. ID: {response?.Data?.EmailId}";
-                OutputColour = Brushes.Green;
+                displayOutputMessage($"Email sent successfully. ID: {response?.Data?.EmailId}", Brushes.Green);
             }
             else
             {
-                OutputMessage = $"Email failed. Error: {response?.Data?.Failures.First()}";
-                OutputColour = Brushes.Red;
+                displayOutputMessage($"Email failed. Error: {response?.Data?.Failures.First()}",  Brushes.Red);
             }
+        }
+
+        private void displayOutputMessage(string message, Brush colour)
+        {
+            OutputMessage = message;
+            OutputColour = colour;
         }
     }
 }
