@@ -12,6 +12,8 @@ https://www.smtp2go.com/pricing/
 3. Manage User-Secrets for the project
 4. Add the following secret: "Smtp2Go:ApiKey": "[api-key]"
 
+*API Key can now be entered within the settings view.
+
 ## Using the Application
 1. Enter your email in the Setting View
 2. Verify your email via the confirmation email

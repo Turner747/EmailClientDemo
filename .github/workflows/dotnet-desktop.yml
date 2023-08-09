@@ -1,0 +1,53 @@
+name: Email Client Demo
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        configuration: [Debug, Release]
+
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: 7.0.x # Adjust to your preferred .NET Core version
+
+      - name: Build application
+        run: dotnet build --configuration ${{ matrix.configuration }} ${{ env.Solution_Name }}
+
+      # Uncomment the following steps if you have unit tests
+      # - name: Restore NuGet packages
+      #   run: dotnet restore ${{ env.Solution_Name }}
+
+      # - name: Run unit tests
+      #   run: dotnet test --configuration ${{ matrix.configuration }} ${{ env.Test_Project_Path }}
+
+      # Uncomment the following steps if you want to publish the built artifacts
+      - name: Publish artifacts
+        run: dotnet publish --configuration ${{ matrix.configuration }} ${{ env.Solution_Name }}
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v2
+        with:
+            name: Published-Artifacts
+            path: bin\Debug\net7.0-windows\publish
+
+    env:
+        Solution_Name: EmailClientDemo.sln
+        # Test_Project_Path: your-test-project-path
+
+        # Uncomment the following line if you have a Test_Project_Path
+        # Test_Project_Path: MyWpfApp.Tests/MyWpfApp.Tests.csproj
