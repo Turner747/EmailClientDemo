@@ -36,15 +36,14 @@ jobs:
       #   run: dotnet test --configuration ${{ matrix.configuration }} ${{ env.Test_Project_Path }}
 
       # Uncomment the following steps if you want to publish the built artifacts
-      # - name: Publish artifacts
-      #   run: dotnet publish --configuration ${{ matrix.configuration }} ${{ env.Solution_Name }}
+      - name: Publish artifacts
+        run: dotnet publish --configuration ${{ matrix.configuration }} ${{ env.Solution_Name }}
 
-      #   - name: Upload build artifacts
-      #     uses: actions/upload-artifact@v2
-      #     with:
-      #       name: Published-Artifacts
-      #       path: |
-      #         path/to/your/published/artifacts
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v2
+        with:
+            name: Published-Artifacts
+            path: bin\Debug\net7.0-windows\publish
 
     env:
         Solution_Name: EmailClientDemo.sln
