@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Media;
 using WpfNavigationDemo.Clients;
@@ -55,7 +56,12 @@ namespace WpfNavigationDemo.MVVM.ViewModel
             Navigation = navigation;
             _emailClient = email;
 
-            SendEmailCommand = new RelayCommand(SendEmail, o => { return true; });
+            SendEmailCommand = new RelayCommand(SendEmail, CanSendEmail);
+        }
+
+        private bool CanSendEmail(object obj)
+        {
+            return _emailClient.SenderEmail != null && !_emailClient.SenderEmail.Equals("");
         }
 
         private async void SendEmail(object obj)
